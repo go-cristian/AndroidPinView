@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="PinEditView">
+    <attr format="color" name="initColor"/>
+    <attr format="color" name="focusColor"/>
+    <attr format="color" name="filledColor"/>
+    <attr format="dimension" name="textSize"/>
+    <attr format="reference" name="inputbackground"/>
+  </declare-styleable>
+</resources>

@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 26
+  buildToolsVersion "26.0.0"
+
+  defaultConfig {
+    minSdkVersion 15
+    targetSdkVersion 26
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+// Dependencies
+ext {
+  //Libraries
+  buildToolsVersion = '26.0.0-alpha1'
+
+  //Testing
+  jUnitVersion = '4.12'
+  mockitoVersion = '1.10.19'
+
+  //UI Tests
+  testRunnerVersion = '0.5'
+  espressoVersion = '2.2.2'
+
+  commonTestDependencies = [junit  : "junit:junit:${jUnitVersion}",
+                            mockito: "org.mockito:mockito-core:${mockitoVersion}"]
+
+  androidTestDependencies =
+      [supportAnnotations: "com.android.support:support-annotations:${buildToolsVersion}",
+       testRunner        : "com.android.support.test:runner:${testRunnerVersion}",
+       espresso          : "com.android.support.test.espresso:espresso-core:${espressoVersion}"]
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  testCompile commonTestDependencies.junit
+  testCompile commonTestDependencies.mockito
+
+  androidTestCompile androidTestDependencies.supportAnnotations
+  androidTestCompile androidTestDependencies.testRunner
+  androidTestCompile androidTestDependencies.espresso
+}
